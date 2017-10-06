@@ -1,0 +1,86 @@
+@import 'effects';
+
+.dropdown {
+  margin: 0 auto;
+  width: $media-target-width / 2;
+}
+
+#StatusFilter {
+  background-color: orange;
+  @include Border(black);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  @include BoxShadow();
+  color: black;
+  display: inline-block;
+  font-family: 'Russo One', sans-serif;
+  height: 3em;
+  line-height: 1.5em;
+  padding: 0.5em;
+  text-decoration: none;
+  transition: background-color 0.3s ease-in-out;
+  width: $media-target-width / 2;
+
+  &:hover {
+    background-color: lighten(orange, 15%);
+  }
+}
+
+#StatusFilter-dropdown {
+  background-color: white;
+  @include Border(black);
+  border-top: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  transition: all 0.3s ease;
+  width: $media-target-width / 2;
+  z-index: 1;
+}
+
+.hidden {
+  height: 0;
+  opacity: 0;
+}
+
+.visible {
+  @include BoxShadow();
+  height: 6em;
+  opacity: 1;
+}
+
+#StatusFilter-dropdown li {
+  color: black;
+  cursor: pointer;
+  list-style: none;
+  height: 3em;
+  line-height: 3em;
+  padding-left: 1em;
+  text-align: left;
+  transition: opacity 0.3s ease;
+  width: 100%;
+
+  &:hover {
+    color: orange;
+  }
+}
+
+#StatusFilter-dropdown.hidden li {
+  opacity: 0;
+  transition: opacity 0;
+  visibility: hidden;
+}
+
+#StatusFilter-dropdown.visible li {
+  opacity: 1;
+
+  &:first-child {
+    transition-delay: 0.15s;
+  }
+
+  &:nth-child(2) {
+    transition-delay: 0.3s;
+  }
+}

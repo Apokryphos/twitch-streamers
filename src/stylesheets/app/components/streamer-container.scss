@@ -1,0 +1,15 @@
+@import 'effects';
+
+.StreamerContainer {
+  display: inline-block;
+  width: 100%;
+
+  @include media-wide() {
+    background-color: #222;
+    border: 0.25em solid #333;
+    border-radius: 0.5em;
+    @include BoxShadow();
+    margin: 0 auto;
+    max-width: $media-target-width + 2em;
+  }
+}

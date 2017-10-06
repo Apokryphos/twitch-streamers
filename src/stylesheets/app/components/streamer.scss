@@ -1,0 +1,88 @@
+@import 'effects';
+@import 'media';
+
+$color-dark: #131218;
+
+$container-height: 5em;
+
+$active-container-background-color: #555265;
+$inactive-container-background-color: #3a393f;
+
+$image-container-background-color: #131218;
+
+$active-text-color: #f98948;
+$inactive-text-color: #bbbbbb;
+
+h1 {
+  color: $color-dark;
+  font-family: 'Russo One', sans-serif;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-family: 'Russo One', sans-serif;
+  font-size: 150%;
+  margin: 0;
+}
+
+.Streamer {
+  background-color: $active-container-background-color;
+  @include Border(#3a393f);
+  @include BoxShadow();
+  display: block;
+  height: $container-height;
+  left: 50%;
+  line-height: $container-height;
+  margin: 0.5em 0;
+  max-width: $media-target-width;
+  text-align: left;
+  width: 100%;
+
+  @include media-wide() {
+    margin: 1em auto;
+  }
+
+  .Streamer-image-container {
+    float: left;
+    height: 100%;
+    text-align: center;
+    width: $container-height;
+
+    .Streamer-image-slot {
+      background-color: $image-container-background-color;
+      @include Border(#DBDBDC);
+      @include BoxShadowShallow();
+      display: inline-block;
+      height: $container-height * 0.7;
+      position: relative;
+      top: 50%;
+      transform: translate(0, -50%);
+      width: $container-height * 0.7;
+    }
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .Streamer-text-line-container {
+    display: inline-block;
+    height: 100%;
+    width: calc(100% - $container-height);
+  }
+
+  .Streamer-text-line {
+    color: $inactive-text-color;
+    height: 50%;
+    line-height: $container-height * 0.5;
+    overflow: hidden;
+    text-overflow: clip;
+    white-space: nowrap;
+    width: 100%;
+  }
+
+  .online {
+    color: $active-text-color;
+  }
+}

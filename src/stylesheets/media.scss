@@ -1,0 +1,17 @@
+/*
+  320px / 16px = 20em
+  Anything larger than that is wide.
+*/
+$media-target-width: 36em;
+
+@mixin media-wide {
+  @media (min-width: #{$media-target-width}) {
+    @content;
+  }
+}
+
+@mixin media-wide-scale($scale) {
+  @media (min-width: #{$media-target-width * $scale}) {
+    @content;
+  }
+}

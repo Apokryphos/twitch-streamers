@@ -1,0 +1,20 @@
+$_default-shadow-color: #131218;
+
+$border-radius-size: 0.25em;
+
+@mixin Border($color) {
+  border: 0.125em solid $color;
+  @include BorderRadius();
+}
+
+@mixin BorderRadius() {
+  border-radius: $border-radius-size;
+}
+
+@mixin BoxShadow($shadow-color: $_default-shadow-color) {
+  box-shadow: 0 0.25em 0.125em $shadow-color;
+}
+
+@mixin BoxShadowShallow($shadow-color: $_default-shadow-color) {
+  box-shadow: 0 0.125em 0.0625em $shadow-color;
+}

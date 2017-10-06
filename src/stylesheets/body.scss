@@ -1,0 +1,41 @@
+@import 'media';
+
+body {
+  background-color: #444156;
+  font-family: 'Ubuntu', sans-serif;
+  // height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+
+  /*
+    Scale font size as extra screen estate increases.
+ */
+  @include media-wide-scale(1.25) {
+    font-size: 125%;
+  }
+
+  @include media-wide-scale(1.5) {
+    font-size: 150%;
+  }
+
+  @include media-wide-scale(1.75) {
+    font-size: 175%;
+  }
+
+  @include media-wide-scale(2) {
+    font-size: 200%;
+  }
+
+  @include media-wide-scale(3) {
+    font-size: 300%;
+  }
+
+  @include media-wide-scale(4) {
+    font-size: 400%;
+  }
+
+  @include media-wide-scale(5) {
+    font-size: 500%;
+  }
+}
