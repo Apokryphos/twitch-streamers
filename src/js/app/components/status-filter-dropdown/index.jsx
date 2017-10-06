@@ -1,30 +1,25 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
+import StatusFilter from './../../status-filter.js';
+
+const statusFilterText = {
+  [StatusFilter.ALL]: 'Show All Streamers',
+  [StatusFilter.ONLINE]: 'Show Online Streamers',
+  [StatusFilter.OFFLINE]: 'Show Offline Streamers'
+};
 
 function getEventTarget(e) {
   e = e || window.event;
   return e.target || e.srcElement;
 }
 
-const StatusFilterState = {
-  ALL: {
-    text: 'Show All Streamers'
-  },
-  ONLINE: {
-    text: 'Show Online Streamers'
-  },
-  OFFLINE: {
-    text: 'Show Offline Streamers'
-  }
-};
-
-class StatusFilter extends React.Component {
-  constructor() {
-    super();
+class StatusFilterDropdown extends React.Component {
+  constructor(props) {
+    super(props);
 
     this.state = {
       dropdownVisible: false,
-      filterState: StatusFilterState.ALL
+      filterState: StatusFilter.ALL
     };
 
     this._closeDropdown = this._closeDropdown.bind(this);
@@ -49,38 +44,53 @@ class StatusFilter extends React.Component {
 
   toggleAll() {
     this.setState({
-      filterState: StatusFilterState.ALL,
+      filterState: StatusFilter.ALL,
       dropdownVisible: false
     });
+
+    if (this.props.onChangedCallback) {
+      this.props.onChangedCallback(StatusFilter.ALL);
+    }
   }
 
   toggleOffline() {
     this.setState({
-      filterState: StatusFilterState.OFFLINE,
+      filterState: StatusFilter.OFFLINE,
       dropdownVisible: false
     });
+
+    if (this.props.onChangedCallback) {
+      this.props.onChangedCallback(StatusFilter.OFFLINE);
+    }
   }
 
   toggleOnline() {
     this.setState({
-      filterState: StatusFilterState.ONLINE,
+      filterState: StatusFilter.ONLINE,
       dropdownVisible: false
     });
+
+    if (this.props.onChangedCallback) {
+      this.props.onChangedCallback(StatusFilter.ONLINE);
+    }
   }
 
   render() {
     const options = {
       all: {
-        filterState: StatusFilterState.ALL,
-        handler: this.toggleAll
+        filterState: StatusFilter.ALL,
+        handler: this.toggleAll,
+        text: statusFilterText[StatusFilter.ALL]
       },
       online: {
-        filterState: StatusFilterState.ONLINE,
-        handler: this.toggleOnline
+        filterState: StatusFilter.ONLINE,
+        handler: this.toggleOnline,
+        text: statusFilterText[StatusFilter.ONLINE]
       },
       offline: {
-        filterState: StatusFilterState.OFFLINE,
-        handler: this.toggleOffline
+        filterState: StatusFilter.OFFLINE,
+        handler: this.toggleOffline,
+        text: statusFilterText[StatusFilter.OFFLINE]
       }
     };
 
@@ -88,11 +98,11 @@ class StatusFilter extends React.Component {
     let option1 = options.online;
     let option2 = options.offline;
 
-    if (this.state.filterState === StatusFilterState.ONLINE) {
+    if (this.state.filterState === StatusFilter.ONLINE) {
       activeOption = options.online;
       option1 = options.all;
       option2 = options.offline;
-    } else if (this.state.filterState === StatusFilterState.OFFLINE) {
+    } else if (this.state.filterState === StatusFilter.OFFLINE) {
       activeOption = options.offline;
       option1 = options.all;
       option2 = options.online;
@@ -100,26 +110,26 @@ class StatusFilter extends React.Component {
 
     const dropdown = (
       <ul
-        id="StatusFilter-dropdown"
+        id="StatusFilterDropdown-dropdown"
         className={this.state.dropdownVisible ? 'visible' : 'hidden'}
       >
         <li onClick={option1.handler}>
-          <a>{option1.filterState.text}</a>
+          <a>{option1.text}</a>
         </li>
         <li onClick={option2.handler}>
-          <a>{option2.filterState.text}</a>
+          <a>{option2.text}</a>
         </li>
       </ul>
     );
 
     const button = (
       <a
-        id="StatusFilter"
+        id="StatusFilterDropdown"
         onClick={this.showDropdown}
         href="#!"
         title="Filter by status."
       >
-        {activeOption.filterState.text}
+        {activeOption.text}
       </a>
     );
 
@@ -142,4 +152,4 @@ class StatusFilter extends React.Component {
 //   onChangedCallback: null,
 // };
 
-module.exports = StatusFilter;
+module.exports = StatusFilterDropdown;

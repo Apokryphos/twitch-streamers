@@ -35,11 +35,33 @@ h2 {
   line-height: $container-height;
   margin: 0.5em 0;
   max-width: $media-target-width;
+  overflow: hidden;
   text-align: left;
+  text-overflow: clip;
+  white-space: nowrap;
   width: 100%;
 
   @include media-wide() {
     margin: 1em auto;
+  }
+
+  &.online {
+    h2 {
+      color: $active-text-color;
+    }
+  }
+
+  &.offline {
+    background-color: $inactive-container-background-color;
+    @include Border(darken($inactive-container-background-color, 10%));
+
+    h2 {
+      color: $inactive-text-color;
+    }
+
+    img {
+      filter: grayscale(100%);
+    }
   }
 
   .Streamer-image-container {
@@ -61,6 +83,8 @@ h2 {
     }
 
     img {
+      color: $image-container-background-color;
+      font-size: 50%;
       height: 100%;
       width: 100%;
     }
@@ -73,16 +97,11 @@ h2 {
   }
 
   .Streamer-text-line {
-    color: $inactive-text-color;
     height: 50%;
     line-height: $container-height * 0.5;
     overflow: hidden;
     text-overflow: clip;
     white-space: nowrap;
     width: 100%;
-  }
-
-  .online {
-    color: $active-text-color;
   }
 }

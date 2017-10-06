@@ -1,18 +1,19 @@
 import React from 'react';
-import StatusFilter from './../status-filter';
+import StatusFilter from './../../status-filter.js';
+import StatusFilterDropdown from './../status-filter-dropdown';
 import Streamer from './../streamer';
 
 class StreamerContainer extends React.Component {
   render() {
     const items = this.props.twitchUsers.map(twitchUser => {
-      let visible = true;
-      // if (this.state.filter === 'all') {
-      //   visible = true;
-      // } else if (this.state.filter === 'online' && twitchUser.isStreaming) {
-      //   visible = true;
-      // } else if (this.state.filter === 'offline' && !twitchUser.isStreaming) {
-      //   visible = true;
-      // }
+      let visible = false;
+      if (this.props.statusFilter === StatusFilter.ALL) {
+        visible = true;
+      } else if (this.props.statusFilter === StatusFilter.ONLINE && twitchUser.isStreaming) {
+        visible = true;
+      } else if (this.props.statusFilter === StatusFilter.OFFLINE && !twitchUser.isStreaming) {
+        visible = true;
+      }
 
       return (
         visible && (
@@ -34,7 +35,7 @@ class StreamerContainer extends React.Component {
     return (
       <div>
         <h1>Twitch Streamers</h1>
-        <StatusFilter />
+        <StatusFilterDropdown onChangedCallback={this.props.onStatusFilterChangedCallback}/>
         {items}
       </div>
     );
