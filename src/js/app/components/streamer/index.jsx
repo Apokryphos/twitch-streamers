@@ -45,7 +45,7 @@ class Streamer extends React.Component {
     }
 
     return (
-      <span className={divClass} title={streamStatus}>
+      <a href={url} className={divClass} title={streamStatus}>
         <div className="Streamer-image-container">
           <div className="Streamer-image-slot">{logoElement}</div>
         </div>
@@ -57,7 +57,7 @@ class Streamer extends React.Component {
           </div>
           <div className="Streamer-text-line">{gameElement}</div>
         </div>
-      </span>
+      </a>
     );
   }
 }

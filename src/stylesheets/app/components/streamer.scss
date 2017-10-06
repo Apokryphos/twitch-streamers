@@ -29,6 +29,7 @@ h2 {
   background-color: $active-container-background-color;
   @include Border(#3a393f);
   @include BoxShadow();
+  color: $inactive-text-color;
   display: block;
   height: $container-height;
   left: 50%;
@@ -38,11 +39,16 @@ h2 {
   overflow: hidden;
   text-align: left;
   text-overflow: clip;
+  transition: background-color 0.3s ease;
   white-space: nowrap;
   width: 100%;
 
   @include media-wide() {
     margin: 1em auto;
+  }
+
+  &:hover {
+      background-color: lighten($active-container-background-color, 10%);
   }
 
   &.online {
@@ -61,6 +67,10 @@ h2 {
 
     img {
       filter: grayscale(100%);
+    }
+
+    &:hover {
+        background-color: lighten($inactive-container-background-color, 10%);
     }
   }
 
