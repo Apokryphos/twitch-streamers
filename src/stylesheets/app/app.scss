@@ -7,3 +7,11 @@
   // height: 100%;
   text-align: center;
 }
+
+.app-title {
+  font-size: 125%;
+
+  @include media-wide() {
+    font-size: 200%;
+  }
+}

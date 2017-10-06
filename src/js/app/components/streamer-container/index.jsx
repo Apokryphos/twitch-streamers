@@ -34,7 +34,7 @@ class StreamerContainer extends React.Component {
 
     return (
       <div>
-        <h1>Twitch Streamers</h1>
+        <h1 class="app-title">Twitch Streamers</h1>
         <StatusFilterDropdown onChangedCallback={this.props.onStatusFilterChangedCallback}/>
         {items}
       </div>

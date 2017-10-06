@@ -59,6 +59,10 @@ h2 {
     h2 {
       color: $active-text-color;
     }
+
+    a, a:hover, a:visited {
+      color: $active-text-color;
+    }
   }
 
   &.offline {
