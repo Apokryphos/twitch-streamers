@@ -2,7 +2,10 @@
 
 .dropdown {
   margin: 0 auto;
-  width: $media-target-width / 2;
+
+  @include media-wide() {
+    max-width: $media-target-width / 2;
+  }
 }
 
 #StatusFilterDropdown {
@@ -19,7 +22,7 @@
   padding: 0.5em;
   text-decoration: none;
   transition: background-color 0.3s ease-in-out;
-  width: $media-target-width / 2;
+  width: 100%;
 
   &:hover {
     background-color: lighten(orange, 15%);

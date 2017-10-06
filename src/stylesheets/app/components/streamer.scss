@@ -21,8 +21,12 @@ h1 {
 
 h2 {
   font-family: 'Russo One', sans-serif;
-  font-size: 150%;
+  font-size: 100%;
   margin: 0;
+
+  @include media-wide() {
+    font-size: 150%;
+  }
 }
 
 .Streamer {
@@ -85,11 +89,11 @@ h2 {
       @include Border(#DBDBDC);
       @include BoxShadowShallow();
       display: inline-block;
-      height: $container-height * 0.7;
+      height: $container-height * 0.8;
       position: relative;
       top: 50%;
       transform: translate(0, -50%);
-      width: $container-height * 0.7;
+      width: $container-height * 0.8;
     }
 
     img {
