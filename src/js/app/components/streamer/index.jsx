@@ -35,11 +35,11 @@ class Streamer extends React.Component {
         </span>
       );
     } else if (this.props.userExists) {
-      gameElement = <span>{this.props.displayName} is not streaming.</span>;
+      gameElement = <span>Not currently streaming.</span>;
     } else {
       gameElement = (
         <span>
-          {this.props.userName} closed their account or does not exist.
+          Account closed or does not exist.
         </span>
       );
     }
