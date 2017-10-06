@@ -33,7 +33,7 @@ class StatusFilterDropdown extends React.Component {
   }
 
   _closeDropdown(event) {
-    if (getEventTarget(event).id !== 'StatusFilter') {
+    if (getEventTarget(event).id !== 'StatusFilterDropdown') {
       this.setState({ dropdownVisible: false });
     }
   }
